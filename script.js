@@ -12,13 +12,17 @@ import {
 
 const myLibrary = [];
 
-function Book(title, author, pages, readStatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = readStatus;
-  this.toggleStatus = function () {
+function book(title, author, pages, readStatus) {
+  function toggleStatus() {
     this.readStatus = !this.readStatus;
+  }
+
+  return {
+    title,
+    author,
+    pages,
+    readStatus,
+    toggleStatus,
   };
 }
 
@@ -117,7 +121,7 @@ function addBookToLibrary() {
   const {
     title, author, pages, readStatus,
   } = getUserInput();
-  const newBook = new Book(title, author, pages, readStatus);
+  const newBook = book(title, author, pages, readStatus);
   myLibrary.push(newBook);
 }
 
